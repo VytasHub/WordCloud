@@ -3,7 +3,11 @@ package parse;
 import org.jsoup.*;
 
 import java.io.*;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -109,6 +113,39 @@ public class Runner
 		//System.out.println(map);
 	}
 	
+	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap, final boolean order)
+    {
+
+		LinkedList<Entry<String, Integer>> list = new LinkedList<Entry<String, Integer>>(unsortMap.entrySet());
+
+        // Sorting the list based on values
+        Collections.sort(list, new Comparator<Entry<String, Integer>>()
+        {
+            public int compare(Entry<String, Integer> o1,
+                    Entry<String, Integer> o2)
+            {
+                if (order)
+                {
+                    return o1.getValue().compareTo(o2.getValue());
+                }
+                else
+                {
+                    return o2.getValue().compareTo(o1.getValue());
+
+                }
+            }
+        });
+
+        // Maintaining insertion order with the help of LinkedList
+        Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
+        for (Entry<String, Integer> entry : list)
+        {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedMap;
+    }
+	
 	
 	
 	
@@ -119,28 +156,30 @@ public class Runner
 	public static void main(String[] args) throws IOException 
  	{
 		
-	//Map<String, Integer> parsedWord = new HashMap<String, Integer>(); 
+	Map<String, Integer> sortedMap = new HashMap<String, Integer>(); 
 	
 	
 		String parsedString;
-		Runner wrdle = new Runner();
-		parsedString = wrdle.Parser();
+		Runner wordle = new Runner();
+		parsedString = wordle.Parser();
 		//System.out.println(parsedString);
 		System.out.println("=================");
 		////////////////////////////////////////////////
 		
 		try 
 		{
-			wrdle.maping();
+			wordle.maping();
 		} 
 		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
 		/////////////////////////////////////////////////
-		wrdle.cleaning(parsedString);
+		wordle.cleaning(parsedString);
 		//clean.cleaning();
 		/////////////////////////////////////////////////
+		sortedMap = sortByComparator(map,false);
+		System.out.println(sortedMap);
 		 
 		 BufferedImage image = new BufferedImage(1200, 500, BufferedImage.TYPE_4BYTE_ABGR);
 		
@@ -154,7 +193,7 @@ public class Runner
 		 int widtX = 0;
 		 int anngle = 0;
 		 
-		 for (Entry<String, Integer> entry : map.entrySet()) 
+		 for (Entry<String, Integer> entry : sortedMap.entrySet()) 
 		 {
 			 
 			    String key = entry.getKey();
@@ -173,7 +212,7 @@ public class Runner
 			    	
 			    	
 			    	FontMetrics metrics = graphics.getFontMetrics(font);
-			    	System.out.println(metrics.getHeight() + " " + metrics.stringWidth(key));
+			    	//System.out.println(metrics.getHeight() + " " + metrics.stringWidth(key));
 			    	metrics.getLeading();
 			    	//metrics.getHeight();
 			    	//metrics.stringWidth(str)
