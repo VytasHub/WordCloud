@@ -91,8 +91,9 @@ public class DataParser
 			goodword = true;
 			  
 		}
+		System.out.println("Data Parser"+map);
 		return map;
-		//System.out.println(map);
+		
 	}
 	
 

@@ -40,7 +40,7 @@ public class Sorter
         {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
-
+        System.out.println("Sorter"+sortedMap);
         return sortedMap;
     }
 	
