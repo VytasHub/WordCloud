@@ -1,4 +1,4 @@
-package parse;
+package ie.gmit.drawing;
 
 import org.jsoup.*;
 
@@ -181,13 +181,13 @@ public class Runner
 		sortedMap = sortByComparator(map,false);
 		System.out.println(sortedMap);
 		 
-		 BufferedImage image = new BufferedImage(1200, 500, BufferedImage.TYPE_4BYTE_ABGR);
+		 BufferedImage image = new BufferedImage(800, 500, BufferedImage.TYPE_4BYTE_ABGR);
 		
 		 Graphics2D  graphics = (Graphics2D) image.getGraphics();
 		 
 		
-		 int x = 300;
-		 int y = 0;
+		 int x = 0;
+		 int y = 50;
 		 int fontsize;
 		 int hgtY = 0; 
 		 int widtX = 0;
@@ -204,8 +204,8 @@ public class Runner
 			    	
 			    	
 			    	fontsize = 20;
-			    	fontsize = fontsize + entry.getValue();
-			    	Font font = new Font(Font.SANS_SERIF, Font.BOLD, fontsize);
+			    	//fontsize = fontsize + entry.getValue();
+			    	Font font = new Font(Font.SANS_SERIF, Font.BOLD, entry.getValue()+8);
 			    	
 			    	
 			    	
@@ -213,33 +213,38 @@ public class Runner
 			    	
 			    	FontMetrics metrics = graphics.getFontMetrics(font);
 			    	//System.out.println(metrics.getHeight() + " " + metrics.stringWidth(key));
-			    	metrics.getLeading();
+			    	//metrics.getLeading();
 			    	//metrics.getHeight();
 			    	//metrics.stringWidth(str)
 			    	
 			    	
-			    	graphics.setColor(Color.orange);
+			    	graphics.setColor(Color.blue);
 			    	graphics.setFont(font);
 			    	
 			    	//graphics.drawString(key, x, y);
-			    	drawRotate(graphics, x, y, anngle, key);
+			    	drawRotate(graphics, x, y + metrics.getHeight(), anngle, key);
 			    	anngle = anngle + 90;
-			    	x = x + metrics.stringWidth(key+1);
+			    	x = x + metrics.stringWidth(key);
+			    	//y = y + (metrics.getHeight()/4);
 			    	
 			    	
-			    	if(anngle == 360)
+			    	if(anngle > 91)
 			    	{
+			    		//x = x + metrics.getHeight();
+			    		y = y + (x + metrics.stringWidth(key));
 			    		anngle = 0;
 			    	}
+			    	
+			    	
 			    	
 			    	//System.out.println(x+" "+y);
 			    	//System.out.println(key + " " + key.length() );
 			    	
-			    	
-			    	if(x > 500)
+//			    	
+			    	if(x > 700)
 			    	{
-			    		y = y + 20;
-			    		x = 20;
+			    		y = y+metrics.getHeight();
+			    		x = 0;
 			    		//System.out.println("Entered");
 			    	}
 			    	
