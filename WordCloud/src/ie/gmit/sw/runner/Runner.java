@@ -1,4 +1,4 @@
-package ie.gmit.drawing;
+package ie.gmit.sw.runner;
 
 import org.jsoup.*;
 
@@ -179,7 +179,7 @@ public class Runner
 		//clean.cleaning();
 		/////////////////////////////////////////////////
 		sortedMap = sortByComparator(map,false);
-		System.out.println(sortedMap);
+		//System.out.println(sortedMap);
 		 
 		 BufferedImage image = new BufferedImage(800, 500, BufferedImage.TYPE_4BYTE_ABGR);
 		
