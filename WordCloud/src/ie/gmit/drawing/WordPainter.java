@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -19,19 +20,29 @@ public class WordPainter
 	
 	public static void Painter(Map<String, Integer> sortedMap) throws IOException
 	{
-		 BufferedImage image = new BufferedImage(700, 700, BufferedImage.TYPE_4BYTE_ABGR);
+		 BufferedImage image = new BufferedImage(900, 900, BufferedImage.TYPE_4BYTE_ABGR);
 			
 		 Graphics2D  graphics = (Graphics2D) image.getGraphics();
 		 
 		
-		 int x = 0;
-		 int y = 50;
+		 int x = 500;
+		 int y = 30;
 		 int fontsize;
-		 int hgtY = 0; 
-		 int widtX = 0;
 		 int anngle = 0;
+		 int yCordinates = 0;
+		 int xCordiantes = 500;
+		 int fontSize = 30;
+		 int r = 0;
+		 int g = 0;
+		 int b = 0;
 		 
-
+		 
+		//GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsEnvironment fontstyle = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	    String[] fontNames = fontstyle.getAvailableFontFamilyNames();
+		//String fontName = fontNames[random];
+		
+		
 		 
 		 for (Entry<String, Integer> entry : sortedMap.entrySet()) 
 		 {
@@ -39,40 +50,60 @@ public class WordPainter
 			    String key = entry.getKey();
 			    Integer value = entry.getValue();
 			   
-			    if(value > 1)
+			    if(value > 3)
 			    {
+			    	if(fontSize == 1)
+			    	{
+			    		fontSize = 2;
+			    	}
 			    	
 			    	fontsize = 20;
-			    	Font font = new Font(Font.SANS_SERIF, Font.BOLD, entry.getValue()+8);
+			    	
+			    	
+			    	int random = (int)(Math.random() * (20 - 1));
+			    	Font font = new Font(fontNames[random], Font.BOLD, fontSize--);
 			    	System.out.println(entry.getValue());
+			    	//entry.getValue()+8
 			    	
 			    	FontMetrics metrics = graphics.getFontMetrics(font);
 			    
-			    	
-			    	graphics.setColor(Color.blue);
+			    	r = (int)(Math.random() * (200 - 1));
+			    	g = (int)(Math.random() * (200 - 1));
+			    	b = (int)(Math.random() * (200 - 1));
+			    	graphics.setColor(Color.getHSBColor(r, b, b));
 			    	graphics.setFont(font);
 			    	
 			    	
-			    	drawRotate(graphics, x, y + metrics.getHeight(), anngle, key);
+			    	drawRotate(graphics, x , y + metrics.getHeight(), anngle, key);
 			    	anngle = anngle + 90;
 			    	
 			    
 			    	if(anngle > 91)
 			    	{
-			    		y = y + metrics.stringWidth(key);
+			    		y = y + metrics.stringWidth(key)+metrics.getHeight();
 			    		anngle = 0;
 			    		
 			    	}
 			    	else
 			    	{
 			    		x = x + metrics.stringWidth(key);
+			    		
 			    	}
 		
-			    	if(x > 600)
+			    	if(x > 800)
 			    	{
-			    		y = 100;
-			    		x = 0;
+			    		yCordinates = yCordinates+30;
+			    		y = yCordinates;
+			    		xCordiantes = xCordiantes - 100;
+			    		x = xCordiantes;
 			    		
+			    	}
+			    	else if(y > 800)
+			    	{
+			    		yCordinates = yCordinates+30 ;
+			    		y = yCordinates;
+			    		xCordiantes = xCordiantes - 100;
+			    		x = xCordiantes;
 			    	}
 			    	
 			    }
@@ -80,11 +111,13 @@ public class WordPainter
 		 
 		 
 		 graphics.dispose();
-		 ImageIO.write(image, "png", new File("image.png"));
+		 
+		 ImageIO.write(image, "png", new File("WordCloud.png"));
 		 
 		 
 		 System.out.println("Painter"+sortedMap);
 		 System.out.println("END");
+		 
 		
 	}
 	
@@ -96,5 +129,7 @@ public class WordPainter
 	    g2d.rotate(-Math.toRadians(angle));
 	    g2d.translate(-(float)x,-(float)y);
 	} 
+	
+	
 
 }

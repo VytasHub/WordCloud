@@ -17,9 +17,9 @@ public class Main
 	{
 		Map<String, Integer> map = new HashMap<String, Integer>(); 
 		String html;
-		String url = "https://en.wikipedia.org/wiki/Main_Page";
+		String url = "https://en.wikipedia.org/wiki/Alan_Turing";
 		
-		
+		//https://en.wikipedia.org/wiki/Alan_Turing
 		
 		Htmlreader reader = new Htmlreader();
 		html = reader.Connect(url);
