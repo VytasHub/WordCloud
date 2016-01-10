@@ -14,10 +14,14 @@ import java.util.Map.Entry;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-public class WordPainter 
+public class WordPainter implements Paintable 
 {
 	
 	
+	/* (non-Javadoc)
+	 * @see ie.gmit.drawing.Paintable#Painter(java.util.Map)
+	 */
+	@Override
 	public void Painter(Map<String, Integer> sortedMap) throws IOException
 	{
 		 BufferedImage image = new BufferedImage(900, 900, BufferedImage.TYPE_4BYTE_ABGR);

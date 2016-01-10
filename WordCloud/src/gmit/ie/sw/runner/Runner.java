@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import org.apache.commons.validator.routines.*;
 
 import gmit.ie.sw.file.OpenFile;
+import ie.gmit.drawing.Paintable;
 import ie.gmit.drawing.WordPainter;
 import ie.gmit.sw.inputoutput.DataParser;
 import ie.gmit.sw.inputoutput.Htmlreader;
@@ -113,7 +114,7 @@ public class Runner {
 						map = sorturl.sortByFrequency(map,false);
 						//System.out.println("URL afther sort" + map);
 						
-						WordPainter painturl = new WordPainter();
+						Paintable painturl = new WordPainter();
 						try 
 						{
 							//System.out.println("URL before paint" + map);
@@ -198,7 +199,7 @@ public class Runner {
 				map = sorttxt.sortByFrequency(map,false);
 				//System.out.println("Txt afther sort" + map);
 				
-				WordPainter painttxt = new WordPainter();
+				Paintable painttxt = new WordPainter();
 				try 
 				{
 					//System.out.println("Txt" + map);
