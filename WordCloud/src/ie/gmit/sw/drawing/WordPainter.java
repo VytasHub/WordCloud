@@ -1,4 +1,4 @@
-package ie.gmit.drawing;
+package ie.gmit.sw.drawing;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,12 +14,17 @@ import java.util.Map.Entry;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Vytas
+ *
+ */
 public class WordPainter implements Paintable 
 {
 	
 	
+	
 	/* (non-Javadoc)
-	 * @see ie.gmit.drawing.Paintable#Painter(java.util.Map)
+	 * @see ie.gmit.sw.drawing.Paintable#Painter(java.util.Map)
 	 */
 	@Override
 	public void Painter(Map<String, Integer> sortedMap) throws IOException
@@ -126,6 +131,13 @@ public class WordPainter implements Paintable
 		
 	}
 	
+	/**
+	 * @param g2d
+	 * @param x
+	 * @param y
+	 * @param angle
+	 * @param text
+	 */
 	public static void drawRotate(Graphics2D g2d, double x, double y, int angle, String text) 
 	{    
 	    g2d.translate((float)x,(float)y);

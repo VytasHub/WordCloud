@@ -9,21 +9,34 @@ import org.jsoup.nodes.Document;
 
 
 
+/**
+ * @author Vytas
+ *
+ */
 public class Htmlreader implements InputOutput 
 {
 	private static Htmlreader hr = new Htmlreader();
 	private String webPageName;
 	
+	/**
+	 * @return
+	 */
 	public static Htmlreader getInstance() 
 	{
 		return hr;
 	}
 	
+	/**
+	 * 
+	 */
 	public Htmlreader() 
 	{
 		this.webPageName = webPageName;
 	}
 
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.inputoutput.InputOutput#Connect(java.lang.String)
+	 */
 	/* (non-Javadoc)
 	 * @see ie.gmit.sw.inputoutput.InputOutput#Connect(java.lang.String)
 	 */
@@ -48,6 +61,9 @@ public class Htmlreader implements InputOutput
 	/* (non-Javadoc)
 	 * @see ie.gmit.sw.inputoutput.InputOutput#getWebPageName()
 	 */
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.inputoutput.InputOutput#getWebPageName()
+	 */
 	@Override
 	public String getWebPageName() 
 	{
@@ -55,6 +71,9 @@ public class Htmlreader implements InputOutput
 	}
 
 
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.inputoutput.InputOutput#setWebPageName(java.lang.String)
+	 */
 	/* (non-Javadoc)
 	 * @see ie.gmit.sw.inputoutput.InputOutput#setWebPageName(java.lang.String)
 	 */

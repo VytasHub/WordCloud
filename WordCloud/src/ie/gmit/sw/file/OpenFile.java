@@ -1,10 +1,14 @@
-package gmit.ie.sw.file;
+package ie.gmit.sw.file;
 
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Vytas
+ *
+ */
 public class OpenFile implements Filepicker 
 {
 	JFileChooser filePicker = new JFileChooser();
@@ -12,6 +16,9 @@ public class OpenFile implements Filepicker
 	
 	/* (non-Javadoc)
 	 * @see gmit.ie.sw.file.Filepicker#PickFile()
+	 */
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.file.Filepicker#PickFile()
 	 */
 	@Override
 	public void PickFile() throws Exception

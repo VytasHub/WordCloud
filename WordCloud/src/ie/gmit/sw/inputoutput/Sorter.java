@@ -7,10 +7,19 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * @author Vytas
+ *
+ */
 public class Sorter 
 {
 	
 	
+	/**
+	 * @param unsortMap
+	 * @param order
+	 * @return
+	 */
 	public static Map<String, Integer> sortByFrequency(Map<String, Integer> unsortMap, final boolean order)
     {
 

@@ -1,4 +1,4 @@
-package gmit.ie.sw.runner;
+package ie.gmit.sw.runner;
 
 import java.awt.EventQueue;
 
@@ -14,9 +14,9 @@ import java.util.Map;
 import java.awt.event.ActionEvent;
 import org.apache.commons.validator.routines.*;
 
-import gmit.ie.sw.file.OpenFile;
-import ie.gmit.drawing.Paintable;
-import ie.gmit.drawing.WordPainter;
+import ie.gmit.sw.drawing.Paintable;
+import ie.gmit.sw.drawing.WordPainter;
+import ie.gmit.sw.file.OpenFile;
 import ie.gmit.sw.inputoutput.DataParser;
 import ie.gmit.sw.inputoutput.Htmlreader;
 import ie.gmit.sw.inputoutput.Sorter;
@@ -24,7 +24,12 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 
-public class Runner {
+/**
+ * @author Vytas
+ *
+ */
+public class Runner
+{
 
 	private JFrame frmWordCloud;
 	private JTextField textField;

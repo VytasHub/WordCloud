@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Vytas
+ *
+ */
 public class DataParser
 {
 	
@@ -14,6 +18,9 @@ public class DataParser
 	
 	private static Map<String, Integer> map = new HashMap<String, Integer>(); 
 	
+	/**
+	 * @return
+	 */
 	public static Map<String, Integer> getMap() 
 	{
 		return map;
@@ -21,6 +28,9 @@ public class DataParser
 
 
 
+	/**
+	 * @param map
+	 */
 	public static void setMap(Map<String, Integer> map) 
 	{
 		DataParser.map = map;
@@ -28,6 +38,9 @@ public class DataParser
 
 
 
+	/**
+	 * @return
+	 */
 	public static String getFile() 
 	{
 		return file;
@@ -35,6 +48,9 @@ public class DataParser
 
 
 
+	/**
+	 * @param file
+	 */
 	public static void setFile(String file) 
 	{
 		DataParser.file = file;
@@ -43,6 +59,11 @@ public class DataParser
 
 
 
+	/**
+	 * @param data
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public static Map<String, Integer> datacleaner(String data) throws FileNotFoundException
 	{
 		

@@ -1,4 +1,4 @@
-package gmit.ie.sw.file;
+package ie.gmit.sw.file;
 
 public interface Filepicker 
 {

@@ -1,4 +1,4 @@
-package ie.gmit.drawing;
+package ie.gmit.sw.drawing;
 
 import java.io.IOException;
 import java.util.Map;
