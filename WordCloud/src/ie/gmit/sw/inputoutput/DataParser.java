@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataParser 
+public class DataParser
 {
 	
 	private static String file = "stopwords.txt";

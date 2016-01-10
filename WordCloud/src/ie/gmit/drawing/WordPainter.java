@@ -17,8 +17,7 @@ public class WordPainter
 {
 	
 	
-	
-	public static void Painter(Map<String, Integer> sortedMap) throws IOException
+	public void Painter(Map<String, Integer> sortedMap) throws IOException
 	{
 		 BufferedImage image = new BufferedImage(900, 900, BufferedImage.TYPE_4BYTE_ABGR);
 			
