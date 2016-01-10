@@ -28,6 +28,7 @@ public class Runner {
 	private JFrame frmWordCloud;
 	private JTextField textField;
 	private Map<String, Integer> map = new HashMap<String, Integer>(); 
+	
 	private String html;
 	
 
@@ -74,6 +75,8 @@ public class Runner {
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
+				
+				System.out.println("Before Button" + map);
 				if(textField.getText().equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "Text Field is Empty");
@@ -85,32 +88,45 @@ public class Runner {
 					if (defaultValidator.isValid(textField.getText())) {
 					    System.out.println("valid");
 						
-						Htmlreader reader = new Htmlreader();
 						
-						html = reader.Connect(textField.getText());
+						Htmlreader hr = Htmlreader.getInstance();
+						html = null;
+						System.out.println("Html " + html);
+						html = hr.Connect(textField.getText());
 						//"https://en.wikipedia.org/wiki/Main_Page"
 						//http://www.tutorialspoint.com/java/java_methods.htm
 						DataParser parseurl = new DataParser();
 						try {
-							map = null;
+							
+							//System.out.println("URL before Parse" + map);
+							
 							map = parseurl.datacleaner(html);
+							//parseurl.setMap(null);
+							//System.out.println("URL afther Parse" + map);
 						} catch (FileNotFoundException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						
 						Sorter sorturl = new Sorter();
+						//System.out.println("URL before sort" + map);
 						map = sorturl.sortByFrequency(map,false);
+						//System.out.println("URL afther sort" + map);
 						
 						WordPainter painturl = new WordPainter();
-						try {
+						try 
+						{
+							//System.out.println("URL before paint" + map);
 							painturl.Painter(map);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
+							map = null;
+							System.out.println("URL afther paint:" + map);
+							JOptionPane.showMessageDialog(null, "Word Cloud PNG complete");
+						} catch (IOException e) 
+						{
 							e.printStackTrace();
 						}
 					    
-					    JOptionPane.showMessageDialog(null, "Word Cloud PNG complete");
+					    
 					    html = null;
 					}
 					else
@@ -149,6 +165,8 @@ public class Runner {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
+				System.out.println("Before Button" + map);
+				
 				OpenFile file = new OpenFile();
 				
 				try 
@@ -165,8 +183,10 @@ public class Runner {
 				DataParser parsetxt = new DataParser();
 				try 
 				{
-					map = null;
+					
+					//System.out.println("Txt before parse" + map);
 					map = parsetxt.datacleaner(file.sb.toString());
+					//System.out.println("Txt afther parse" + map);
 				} catch (FileNotFoundException e) 
 				{
 					// TODO Auto-generated catch block
@@ -174,17 +194,24 @@ public class Runner {
 				}
 				
 				Sorter sorttxt = new Sorter();
+				//System.out.println("Txt before sort" + map);
 				map = sorttxt.sortByFrequency(map,false);
+				//System.out.println("Txt afther sort" + map);
 				
 				WordPainter painttxt = new WordPainter();
 				try 
 				{
+					//System.out.println("Txt" + map);
+					//System.out.println("Txt before paint" + map);
 					painttxt.Painter(map);
+					map = null;
+					System.out.println("Txt afther paint" + map);
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				JOptionPane.showMessageDialog(null, "Word Cloud PNG complete");
+				
 				file.sb = null;
 				
 			}

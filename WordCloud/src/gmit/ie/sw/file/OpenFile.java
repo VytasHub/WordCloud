@@ -3,6 +3,7 @@ package gmit.ie.sw.file;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 public class OpenFile implements Filepicker 
 {
@@ -27,6 +28,7 @@ public class OpenFile implements Filepicker
 				sb.append("\n");
 			}
 			input.close();
+			JOptionPane.showMessageDialog(null, "Word Cloud PNG complete");
 		}
 		else
 		{

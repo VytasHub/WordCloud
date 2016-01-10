@@ -7,18 +7,27 @@ import java.util.Map;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-public class Htmlreader 
+
+
+public class Htmlreader implements InputOutput 
 {
-	//private static Map<String, Integer> map = new HashMap<String, Integer>(); 
-	//private String[] stopwords = new String[300];
+	private static Htmlreader hr = new Htmlreader();
 	private String webPageName;
 	
+	public static Htmlreader getInstance() 
+	{
+		return hr;
+	}
 	
 	public Htmlreader() 
 	{
 		this.webPageName = webPageName;
 	}
 
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.inputoutput.InputOutput#Connect(java.lang.String)
+	 */
+	@Override
 	public String Connect(String webPageName)
 	{
 		String htmldata = "";
@@ -36,16 +45,26 @@ public class Htmlreader
 		return htmldata;
 	}
 	
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.inputoutput.InputOutput#getWebPageName()
+	 */
+	@Override
 	public String getWebPageName() 
 	{
 		return webPageName;
 	}
 
 
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.inputoutput.InputOutput#setWebPageName(java.lang.String)
+	 */
+	@Override
 	public void setWebPageName(String webPageName) 
 	{
 		this.webPageName = webPageName;
 	}
+
+	
 
 	
 	

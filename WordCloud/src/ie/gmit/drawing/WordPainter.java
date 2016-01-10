@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 public class WordPainter 
 {
@@ -61,7 +62,7 @@ public class WordPainter
 			    	
 			    	int random = (int)(Math.random() * (20 - 1));
 			    	Font font = new Font(fontNames[random], Font.BOLD, fontSize--);
-			    	System.out.println(entry.getValue());
+			    	//System.out.println(entry.getValue());
 			    	//entry.getValue()+8
 			    	
 			    	FontMetrics metrics = graphics.getFontMetrics(font);
@@ -114,7 +115,8 @@ public class WordPainter
 		 ImageIO.write(image, "png", new File("WordCloud.png"));
 		 
 		 
-		 System.out.println("Painter"+sortedMap);
+		 
+		 //System.out.println("Painter"+sortedMap);
 		 System.out.println("END");
 		 
 		

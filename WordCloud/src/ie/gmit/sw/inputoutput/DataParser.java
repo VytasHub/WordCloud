@@ -14,6 +14,20 @@ public class DataParser
 	
 	private static Map<String, Integer> map = new HashMap<String, Integer>(); 
 	
+	public static Map<String, Integer> getMap() 
+	{
+		return map;
+	}
+
+
+
+	public static void setMap(Map<String, Integer> map) 
+	{
+		DataParser.map = map;
+	}
+
+
+
 	public static String getFile() 
 	{
 		return file;
@@ -32,7 +46,9 @@ public class DataParser
 	public static Map<String, Integer> datacleaner(String data) throws FileNotFoundException
 	{
 		
-		
+		//map = null;
+		map.clear();
+		System.out.println("DATA PARSER" + map);
 		String[] words = data.split("[^a-zA-Z']+");
 		int j;
 		int count =0;
@@ -87,12 +103,12 @@ public class DataParser
 						map.put(t, frequency);
 					}
 			}
-			//System.out.println(t);
 			goodword = true;
 			  
 		}
-		System.out.println("Data Parser"+map);
+		//System.out.println("Data Parser"+map);
 		return map;
+		
 		
 	}
 	
